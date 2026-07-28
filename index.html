@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sua Loja | Método MODA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0A0C10;
+    --panel: #0E1938;
+    --panel-2: #142450;
+    --amber: #F5A428;
+    --amber-soft: #F5A42833;
+    --violet: #8B7CFF;
+    --ink: #F4F1EA;
+    --ink-muted: #A7A398;
+    --line: #26325C;
+    --blue-light: #3D5FD1;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Montserrat', sans-serif;
+    font-weight:400;
+    line-height:1.55;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Montserrat', sans-serif;
+    font-weight:800;
+    letter-spacing:-0.01em;
+    line-height:1.08;
+  }
+  .eyebrow{
+    font-family:'Montserrat', sans-serif;
+    font-weight:600;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--amber);
+    display:inline-block;
+    margin-bottom:1.1rem;
+  }
+  .wrap{
+    max-width:640px;
+    margin:0 auto;
+    padding:0 1.5rem;
+  }
+  section{
+    position:relative;
+    padding:3.75rem 0;
+  }
+  .progress-track{
+    position:fixed;
+    top:0; left:0; right:0;
+    height:3px;
+    background:var(--line);
+    z-index:50;
+  }
+  .progress-fill{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg, var(--amber), var(--violet));
+    transition:width 0.1s linear;
+  }
+
+  /* HERO / TELA 1 */
+  .hero{
+    min-height:100svh;
+    display:flex;
+    align-items:flex-end;
+    padding:0 0 1.5rem 0;
+    background-image:
+  linear-gradient(
+    180deg,
+    rgba(10,12,16,.15) 0%,
+    rgba(10,12,16,.15) 50%,
+    rgba(10,12,16,.80) 78%,
+    rgba(10,12,16,.99) 100%
+  ),
+  url('assets/Tela01-topo.png');
+    background-size:cover;
+   background-position:center top;
+  }
+  .hero .wrap{max-width:680px;}
+  .hero h1{
+    font-size:clamp(2rem, 6vw, 3.1rem);
+    margin-bottom:1.2rem;
+    text-shadow:0 6px 24px rgba(0,0,0,.9);
+}
+  .hero h1 span{color:var(--amber);}
+  .hero p{
+    font-size:1.05rem;
+    color:var(--ink-muted);
+    max-width:34ch;
+    text-shadow:0 3px 12px rgba(0,0,0,.9);
+}
+  .scroll-cue{
+    position:absolute;
+    bottom:-40px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    z-index:5;
+  }
+  .scroll-cue-label{
+    font-family:'Montserrat', sans-serif;
+    font-size:0.68rem;
+    color:var(--ink-muted);
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+  }
+  .scroll-cue-line{
+    position:relative;
+    width:1px;
+    height:38px;
+    background:var(--line);
+    overflow:hidden;
+  }
+  .scroll-cue-line::after{
+    content:'';
+    position:absolute;
+    top:-100%;
+    left:0;
+    width:100%;
+    height:100%;
+    background:linear-gradient(180deg, transparent, var(--amber));
+    animation:scrollDrip 1.8s ease-in-out infinite;
+  }
+  @keyframes scrollDrip{
+    0%{top:-100%;}
+    60%{top:100%;}
+    100%{top:100%;}
+  }
+
+  /* TEXT SECTIONS */
+  .section-alt{background:linear-gradient(180deg, var(--bg) 0%, var(--panel) 45%, var(--panel) 55%, var(--bg) 100%);}
+  h2{font-size:clamp(1.5rem, 4vw, 2.1rem); margin-bottom:1.3rem;}
+  p{font-size:1.02rem; font-weight:500; color:var(--ink-muted); margin-bottom:1rem;}
+  p strong{color:var(--ink); font-weight:600;}
+
+  .steps-inline{
+    text-align:left;
+    margin:2.2rem 0;
+    border-left:2px solid var(--line);
+    padding-left:1.4rem;
+  }
+  .steps-inline .step-item{
+    display:flex;
+    align-items:center;
+    gap:1rem;
+    min-height:4.6rem;
+    padding-bottom:1.2rem;
+  }
+  .steps-inline .step-item:last-child{padding-bottom:0;}
+  .steps-inline .step-number{
+    flex:0 0 auto;
+    width:2.3rem; height:2.3rem;
+    border:2px solid var(--panel-2);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800;
+    font-size:1.05rem;
+    color:var(--bg);
+    background:var(--amber);
+    margin-left:-2.55rem;
+  }
+  .steps-inline .step-item p{
+    margin-bottom:0;
+    padding-top:0;
+    color:var(--ink);
+    font-weight:600;
+  }
+  /* IMAGE BLOCK */
+  .imgblock{
+    width:100%;
+    border-radius:10px;
+    overflow:hidden;
+    margin:2rem 0;
+    border:1px solid var(--line);
+  }
+  .imgblock img{width:100%; display:block;}
+
+  .callout{
+    background:linear-gradient(135deg, var(--panel-2) 0%, var(--bg) 100%);
+    border-left:3px solid var(--amber);
+    padding:1.3rem 1.5rem;
+    border-radius:4px;
+    margin:1.8rem 0;
+  }
+  .callout p{color:var(--ink); margin-bottom:0;}
+
+  /* TELA 5 - DIAGRAM */
+  .diagram-section{background:var(--bg); text-align:center;}
+  .diagram-wrap{margin-top:2.5rem;}
+  .diagram-wrap svg{width:100%; height:auto; max-width:560px;}
+
+  .moda-list{
+    text-align:left;
+    margin:2.2rem 0;
+    border-left:2px solid var(--line);
+    padding-left:1.4rem;
+  }
+  .moda-item{
+    display:flex;
+    align-items:center;
+    gap:1rem;
+    min-height:4.6rem;
+    padding-bottom:1.2rem;
+  }
+  .moda-item:last-child{padding-bottom:0;}
+  .moda-letter{
+    flex:0 0 auto;
+    width:2.3rem; height:2.3rem;
+    border:2px solid var(--panel-2);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800;
+    font-size:1.05rem;
+    color:var(--bg);
+    background:var(--amber);
+    margin-left:-2.55rem;
+  }
+  .moda-item p{
+    margin-bottom:0;
+    padding-top:0;
+  }
+  .moda-item p strong{color:var(--ink);}
+
+  .deliv-list{
+    text-align:left;
+    margin:2rem 0;
+    list-style:none;
+  }
+  .deliv-list li{
+    display:flex;
+    align-items:flex-start;
+    gap:0.9rem;
+    padding-bottom:1.3rem;
+  }
+  .deliv-list li:last-child{padding-bottom:0;}
+  .deliv-check{
+    flex:0 0 auto;
+    color:var(--amber);
+    font-weight:800;
+    font-size:1.1rem;
+    line-height:1.5;
+  }
+  .deliv-list li p{margin-bottom:0;}
+  .deliv-list li p strong{color:var(--ink);}
+
+  .about-block{
+    display:flex;
+    flex-direction:column;
+    gap:1.3rem;
+    margin-top:1.8rem;
+  }
+  .about-photo{
+    width:100%;
+    aspect-ratio:4/5;
+    border-radius:10px;
+    border:1px solid var(--line);
+    background:var(--panel-2);
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    font-size:0.75rem;
+    color:var(--ink-muted);
+    line-height:1.3;
+    overflow:hidden;
+  }
+  .about-photo img{width:100%; height:100%; object-fit:cover; display:none;}
+  .about-name{
+    font-weight:700;
+    color:var(--ink);
+    margin-bottom:0.2rem;
+  }
+  .about-role{
+    font-size:0.85rem;
+    color:var(--ink-muted);
+  }
+
+  .fit-grid{
+    display:flex;
+    flex-direction:column;
+    gap:1.6rem;
+    margin-top:1.8rem;
+  }
+  .fit-col{
+    background:var(--panel-2);
+    border-radius:8px;
+    padding:1.4rem 1.5rem;
+  }
+  .fit-col.yes{border-left:3px solid var(--amber);}
+  .fit-col.no{border-left:3px solid #4A4D57;}
+  .fit-col h3{
+    font-size:1rem;
+    margin-bottom:0.9rem;
+  }
+  .fit-col.yes h3{color:var(--amber);}
+  .fit-col.no h3{color:var(--ink-muted);}
+  .fit-col ul{list-style:none;}
+  .fit-col li{
+    display:flex;
+    align-items:flex-start;
+    gap:0.6rem;
+    padding-bottom:0.7rem;
+    font-size:0.92rem;
+    color:var(--ink);
+  }
+  .fit-col li:last-child{padding-bottom:0;}
+  .fit-mark{flex:0 0 auto; font-weight:800;}
+  .fit-col.yes .fit-mark{color:var(--amber);}
+  .fit-col.no .fit-mark{color:#6B6E78;}
+
+  .scarcity-note{
+    background:#16181F;
+    border-radius:8px;
+    padding:1rem 1.3rem;
+    margin-top:1.5rem;
+    font-size:0.88rem;
+    color:var(--ink-muted);
+    text-align:center;
+  }
+  .scarcity-note strong{color:var(--amber);}
+
+  .guarantee-badge{
+    width:150px; height:150px;
+    margin:2rem auto 1.5rem;
+    border-radius:50%;
+    border:2px solid var(--amber);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+    background:radial-gradient(circle, var(--panel) 0%, var(--bg) 75%);
+  }
+  .guarantee-badge::before{
+    content:'';
+    position:absolute;
+    inset:8px;
+    border-radius:50%;
+    border:1px dashed var(--amber);
+    opacity:0.5;
+  }
+  .guarantee-badge-icon{font-size:1.6rem; margin-bottom:0.2rem;}
+  .guarantee-badge-days{
+    font-family:'Montserrat', sans-serif;
+    font-weight:900;
+    font-size:1.9rem;
+    color:var(--amber);
+    line-height:1;
+  }
+  .guarantee-badge-label{
+    font-size:0.68rem;
+    font-weight:700;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink);
+    margin-top:0.15rem;
+  }
+  .guarantee-text{
+    max-width:34ch;
+    margin:0 auto;
+    font-size:0.92rem;
+    color:var(--ink-muted);
+  }
+
+  .carousel-slot{
+    border:1.5px dashed var(--line);
+    border-radius:10px;
+    padding:3.5rem 1.5rem;
+    text-align:center;
+    color:var(--ink-muted);
+    font-size:0.85rem;
+    line-height:1.6;
+    margin-top:1.5rem;
+  }
+  .carousel-slot strong{color:var(--amber);}
+
+  .proof-carousel{
+    display:flex;
+    gap:1rem;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    padding:1.5rem 0 1rem;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .proof-carousel::-webkit-scrollbar{display:none;}
+  .proof-carousel img{
+    scroll-snap-align:center;
+    flex:0 0 auto;
+    width:78%;
+    max-width:280px;
+    height:auto;
+    object-fit:contain;
+    border-radius:10px;
+    border:1px solid var(--line);
+    display:block;
+  }
+  .proof-carousel-hint{
+    text-align:center;
+    font-size:0.75rem;
+    color:var(--ink-muted);
+    margin-top:0.3rem;
+  }
+
+  .mid-cta{
+    text-align:center;
+    margin-top:2.2rem;
+  }
+  .btn-secondary{
+    display:inline-block;
+    background:transparent;
+    color:var(--amber);
+    font-weight:700;
+    font-size:0.92rem;
+    padding:0.85rem 1.8rem;
+    border:1.5px solid var(--amber);
+    border-radius:6px;
+    text-decoration:none;
+    transition:background 0.15s ease, color 0.15s ease;
+  }
+  .btn-secondary:hover{background:var(--amber); color:#0A0C10;}
+
+  /* TELA 6 - PROVA */
+  .proof-slot{
+    border:1.5px dashed var(--line);
+    border-radius:10px;
+    padding:3rem 1.5rem;
+    text-align:center;
+    color:var(--ink-muted);
+    font-family:'Montserrat', sans-serif;
+    font-size:0.82rem;
+    letter-spacing:0.02em;
+  }
+
+  .phone-mockup{
+    width:250px;
+    margin:2.5rem auto 0;
+    padding:12px;
+    background:#111;
+    border-radius:2.6rem;
+    box-shadow:0 20px 50px rgba(0,0,0,0.5), 0 0 0 1px #2A2A2A;
+    position:relative;
+  }
+  .phone-notch{
+    position:absolute;
+    top:12px; left:50%;
+    transform:translateX(-50%);
+    width:38%; height:20px;
+    background:#111;
+    border:2px solid #2A2A2A;
+    border-radius:0 0 14px 14px;
+    z-index:3;
+  }
+  .phone-screen{
+    position:relative;
+    aspect-ratio:9/19.5;
+    border-radius:1.9rem;
+    overflow:hidden;
+    background:#000;
+  }
+  .phone-screen video{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .video-missing-note{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:1.5rem;
+    font-family:'Montserrat', sans-serif;
+    font-size:0.72rem;
+    color:var(--ink-muted);
+    background:#0D0F14;
+    line-height:1.5;
+  }
+
+  /* CTA FINAL */
+  .cta-section{
+    background:radial-gradient(ellipse at 50% 0%, var(--panel) 0%, var(--bg) 60%);
+    text-align:center;
+    padding:6rem 0 7rem;
+  }
+  .cta-section h2{font-size:clamp(1.6rem, 5vw, 2.3rem);}
+  .btn{
+    display:inline-block;
+    margin-top:1.8rem;
+    background:var(--amber);
+    color:#0A0C10;
+    font-weight:700;
+    font-size:1rem;
+    padding:1rem 2.2rem;
+    border-radius:6px;
+    text-decoration:none;
+    letter-spacing:0.01em;
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow:0 0 0 0 var(--amber-soft);
+  }
+  .btn:hover{transform:translateY(-2px); box-shadow:0 8px 24px var(--amber-soft);}
+  .cta-note{
+    margin-top:1.2rem;
+    font-size:0.85rem;
+    color:var(--ink-muted);
+  }
+
+  footer{
+    text-align:center;
+    padding:2rem 1.5rem 3rem;
+    font-size:0.78rem;
+    color:#5C6070;
+  }
+
+  .reveal{opacity:0; transform:translateY(14px); transition:opacity 0.6s ease, transform 0.6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1; transform:none; transition:none;}
+    .btn:hover{transform:none;}
+  }
+
+  a:focus-visible, .btn:focus-visible{
+    outline:2px solid var(--amber);
+    outline-offset:3px;
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+
+<!-- TELA 1 -->
+<section class="hero">
+  <div class="wrap reveal in">
+    <span class="eyebrow">Pensa comigo</span>
+    <h1>O que aconteceria se <span>5 mil pessoas</span> vissem sua loja, todos os dias?</h1>
+    <p>Você acha que venderia mais?</p>
+    <div class="scroll-cue">
+      <span class="scroll-cue-line"></span>
+    </div>
+  </div>
+</section>
+<section style="padding-top:3rem; padding-bottom:3rem; background:var(--bg);">
+  <div class="wrap reveal in">
+    <p style="margin-bottom:0;"><strong>Até o final desta página, você vai entender exatamente o que fazer para vender suas peças online, todos os dias, com previsibilidade.</strong><br>Mesmo que você não entenda nada de marketing digital ou vendas digitais.</p>
+  </div>
+</section>
+
+<!-- A ANALOGIA -->
+<section class="section-alt">
+
+  <div class="wrap reveal">
+    <span class="eyebrow">Tela 2 · A analogia</span>
+    <h2>Primeiro, vamos entender como uma venda online acontece.</h2>
+    <p>A boa notícia: não é nada muito diferente do que já acontece na sua loja física, todos os dias.</p>
+    <p>Toda venda, física ou online, precisa dos mesmos 5 passos:</p>
+    <div class="steps-inline">
+      <div class="step-item">
+        <span class="step-number">1</span>
+        <p>A cliente descobre que sua loja existe</p>
+      </div>
+      <div class="step-item">
+        <span class="step-number">2</span>
+        <p>Ela se desloca até a loja</p>
+      </div>
+      <div class="step-item">
+        <span class="step-number">3</span>
+        <p>Ela é atendida por alguém que entende o que ela busca</p>
+      </div>
+      <div class="step-item">
+        <span class="step-number">4</span>
+        <p>Ela vê e experimenta os produtos</p>
+      </div>
+      <div class="step-item">
+        <span class="step-number">5</span>
+        <p>Ela decide e finaliza a compra</p>
+      </div>
+    </div><div class="imgblock"><img src="assets/tela2-analogia.jpg" alt="Mulher caminhando com celular na mão, com elementos digitais de vitrine, WhatsApp e pagamento flutuando ao redor"></div>
+   <p><strong>Você só precisa ter um processo que garanta que essas mesmas etapas aconteçam no seu ecossistema online, guiando as clientes em cada uma delas.</strong></p>
+  </div>
+</section>
+
+
+<!-- TELA 3 / PONTO CEGO + CUSTO (fundidas) -->
+<section class="section-alt">
+  <div class="wrap reveal">
+    <span class="eyebrow">O que trava a maioria</span>
+    <h2>A maioria das lojas para na primeira etapa, e isso tem um custo real.</h2>
+    <p>A maioria dos lojistas cria um perfil, posta sem estratégia, tenta viralizar, mas não consegue transformar seguidores em vendas. Isso acontece por falta de um processo de aquisição de clientes eficiente, e não por falta de bons produtos.</p>
+    <div class="imgblock"><img src="assets/tela3-trava.jpg" alt="Lojista gravando conteúdo para redes sociais, com monitor ao fundo mostrando faturamento zerado"></div>
+  </div>
+</section>
+
+<!-- TELA 4 / A GRANDE OPORTUNIDADE -->
+<section>
+  <div class="wrap reveal">
+    <span class="eyebrow">A grande oportunidade</span>
+    <h2>Existe uma mina de ouro na sua cidade.</h2>
+    <p>Nesse exato momento, milhares de pessoas na sua região desejam comprar seus looks, e estão comprando em outras lojas porque não conhecem o seu negócio.</p>
+   <p>Você só precisa anunciar seus produtos para essas pessoas, todos os dias, e direcionar as interessadas pro WhatsApp da loja.</p>
+    <div class="imgblock"><img src="assets/tela4-oportunidade.jpg" alt="Vista aérea de uma loja de roupas irradiando linhas de luz âmbar por toda a cidade à noite"></div>
+    <p><strong>A maioria dessas pessoas nunca vai passar na frente da sua loja física, mas está olhando pro Instagram o dia inteiro. É lá que seus anúncios precisam aparecer.</strong></p>
+    <div class="mid-cta"><a href="https://wa.me/5584999423056?text=Ol%C3%A1%2C%20quero%20aparecer%20pras%20minhas%20clientes%20todos%20os%20dias.%20Vi%20a%20p%C3%A1gina%20do%20M%C3%A9todo%20MODA." class="btn-secondary" target="_blank" rel="noopener">Quero aparecer pras minhas clientes</a></div>
+  </div>
+</section>
+
+<!-- TELA 5 / MÉTODO MODA + DIAGRAMA -->
+<section class="section-alt diagram-section">
+  <div class="wrap reveal">
+    <span class="eyebrow">Tela 5 · O Método MODA</span>
+    <h2>O <span style="color:var(--amber);">Método MODA</span> foi feito para lojistas que querem vender todos os dias no digital.</h2>
+    <p>Sem depender do movimento da loja física, ou de indicação, implementando um canal de vendas previsível, com 4 pilares.</p>
+
+    <div class="moda-list">
+      <div class="moda-item">
+        <span class="moda-letter">M</span>
+        <p><strong>Movimento.</strong> Atraímos pessoas novas pro seu ecossistema, todos os dias, com tráfego pago estratégico.</p>
+      </div>
+      <div class="moda-item">
+        <span class="moda-letter">O</span>
+        <p><strong>Organização do relacionamento.</strong> Te ajudamos a gerar conexão e aquecer esse novo público através de marketing de conteúdo.</p>
+      </div>
+      <div class="moda-item">
+        <span class="moda-letter">D</span>
+        <p><strong>Decisão de compra.</strong> Captação de leads com foco em vendas, gerando demanda qualificada no seu WhatsApp, todos os dias.</p>
+      </div>
+      <div class="moda-item">
+        <span class="moda-letter">A</span>
+        <p><strong>Ativação de base.</strong> Vender de novo pra quem comprou, converter quem não decidiu.</p>
+      </div>
+    </div>
+
+    <p style="margin-top:1.5rem;"><strong>Esses 4 pilares trabalham juntos, todos os dias, pra transformar desconhecidos em clientes recorrentes da sua loja.</strong></p>
+  </div>
+</section>
+
+<!-- TELA 5.5 / ENTREGÁVEIS -->
+<section>
+  <div class="wrap reveal">
+    <span class="eyebrow">O que você recebe</span>
+    <h2>O que vamos implementar na sua loja?</h2>
+    <ul class="deliv-list">
+
+       <li>
+        <span class="deliv-check">✓</span>
+        <p><strong>Planejamento estratégico de mídia.</strong> Definição de onde, quando e pra quem anunciar, para o investimento ser bem direcionado.</p>
+      </li>
+
+      <li>
+        <span class="deliv-check">✓</span>
+        <p><strong>Gestão de tráfego pago.</strong> Campanhas gerando demanda qualificada no seu WhastApp, todos os dias.</p>
+      </li>
+      
+      <li>
+        <span class="deliv-check">✓</span>
+        <p><strong>Posicionamento digital que converte.</strong> Direcionamento detalhado para ter um perfil que vende.</p>
+      </li>
+      <li>
+        <span class="deliv-check">✓</span>
+        <p><strong>Processo de atendimento no WhatsApp.</strong> Script de vendas com foco em conversão.</p>
+      </li>
+      <li>
+        <span class="deliv-check">✓</span>
+        <p><strong>CRM de acompanhamento.</strong> Fluxo comercial eficiente pra converter quem ainda não decidiu.</p>
+      </li>
+      <li>
+        <span class="deliv-check">✓</span>
+        <p><strong>Rastreamento avançado.</strong> Sabemos exatamente qual campanha e anúncio deu resultado, pra que cada centavo investido traga retorno.</p>
+      </li>
+    </ul>
+    <div class="mid-cta"><a href="https://wa.me/5584999423056?text=Ol%C3%A1%2C%20quero%20aparecer%20pras%20minhas%20clientes%20todos%20os%20dias.%20Vi%20a%20p%C3%A1gina%20do%20M%C3%A9todo%20MODA." class="btn-secondary" target="_blank" rel="noopener">Quero isso na minha loja</a></div>
+  </div>
+</section>
+
+<!-- SOBRE MIM / AUTORIDADE -->
+<section style="padding-top:3rem; padding-bottom:3rem;">
+  <div class="wrap reveal">
+    <h1 style="font-size:clamp(1.5rem, 4vw, 2.1rem); margin-bottom:1.3rem;">Quem sou eu</h1>
+    <div class="about-block">
+      <div class="about-photo">
+        <img src="assets/sobremim-foto.jpg" alt="Foto de Marcos Fernandes" onload="this.style.display='block'; this.nextElementSibling.style.display='none';" onerror="this.style.display='none';">
+        <span class="about-photo-fallback">FOTO<br>AQUI</span>
+      </div>
+      <div>
+        <div class="about-name">Marcos Fernandes</div>
+        <div class="about-role">Especialista em tráfego e conversão para lojas de moda e varejo.</div>
+      </div>
+    </div>
+    <p style="margin-top:1.2rem;">Depois de 2 anos gerenciando tráfego em agências e atendendo mais de 30 lojas, desenvolvi uma metodologia capaz de aumentar o faturamento do seu negócio em até 90 dias.</p>
+  </div>
+</section>
+
+
+<!-- TELA 6 / PROVA -->
+<section>
+  <div class="wrap reveal">
+    <span class="eyebrow">Tela 6 · Prova</span>
+    <h2>Os resultados que já geramos.</h2>
+
+    <div class="proof-carousel">
+      <img src="assets/prova-1.png" alt="Print de resultado: investimento e faturamento de campanha, R$124.114,00 de faturamento no período">
+      <img src="assets/prova-2.png" alt="Print de resultado: investimento e faturamento de campanha, R$63.194,00 de faturamento no período">
+      <img src="assets/prova-3.png" alt="Print de resultado: investimento e faturamento de campanha, R$66.402,00 de faturamento no período">
+      <img src="assets/prova-4.png" alt="Print de resultado: investimento e faturamento de campanha, R$29.856,00 de faturamento no período">
+      <img src="assets/prova-5.png" alt="Print de resultado: investimento e faturamento de campanha, R$75.053,00 de faturamento no período">
+      <img src="assets/prova-6.png" alt="Print de resultado: investimento e faturamento de campanha, R$43.325,00 de faturamento no período">
+    </div>
+    <div class="proof-carousel-hint">← arraste pro lado pra ver mais →</div>
+  </div>
+</section>
+
+<!-- GARANTIA -->
+<section class="section-alt">
+  <div class="wrap reveal" style="text-align:center;">
+    <h1 style="font-size:clamp(1.5rem, 4vw, 2.1rem); margin-bottom:1.3rem;">Garantia</h1>
+    <img src="assets/selo-garantia.png" alt="Selo de garantia de 30 dias" style="width:200px; margin:0 auto; display:block;">
+    <p style="font-weight:800; color:var(--amber); margin-top:1.2rem; margin-bottom:0.4rem;">Risco zero.</p>
+    <p class="guarantee-text">Se implementarmos nossa metodologia e, você não fizer nenhuma venda online no primeiro mês, devolvemos 100% do seu investimento, referente a nossa prestação de serviço.</p>
+  </div>
+</section>
+
+<!-- BLOCO DE IDENTIFICAÇÃO -->
+<section class="section-alt">
+  <div class="wrap reveal">
+    <span class="eyebrow">Pra deixar claro</span>
+    <h2>Para quem é o método MODA?</h2>
+    <div class="fit-grid">
+      <div class="fit-col yes">
+        <h3>É para lojistas que:</h3>
+        <ul>
+          <li><span class="fit-mark">✓</span> Tem um bom produto, sente que tem potencial, mas depende das vendas da loja física e da indicação</li>
+          <li><span class="fit-mark">✓</span> Quer vender todos os dias, sem depender de sorteio, data comemorativa ou promoção</li>
+          <li><span class="fit-mark">✓</span> Quer vender online sem depender de fazer dancinha pra viralizar</li>
+          <li><span class="fit-mark">✓</span> Entende que investir em marketing é necessário pra crescer de verdade</li>
+        </ul>
+      </div>
+      <div class="fit-col no">
+        <h3>Não é pra lojistas que:</h3>
+        <ul>
+          <li><span class="fit-mark">✗</span> Procura resultados milagrosos, da noite pro dia, sem nenhum tipo de investimento</li>
+          <li><span class="fit-mark">✗</span> Acredita que só ter um produto bom já é suficiente pra vender sozinho, sem estratégia</li>
+          <li><span class="fit-mark">✗</span> Acha que não precisa investir em marketing</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TELA 7 / CTA -->
+<section class="cta-section">
+  <div class="wrap reveal">
+    <span class="eyebrow">Se você chegou até aqui, vamos conversar!</span>
+    <h2>Quer entender como isso funcionaria pra sua loja?</h2>
+    <p style="max-width:38ch; margin:0 auto;">Em 20 minutos, te mostro onde sua loja está perdendo cliente hoje, e como o Método MODA pode te ajudar a vender mais.</p>
+
+    <a href="https://wa.me/5584999423056?text=Ol%C3%A1%2C%20quero%20agendar%20minha%20conversa%20sobre%20o%20M%C3%A9todo%20MODA." class="btn" style="margin-top:1.8rem;" target="_blank" rel="noopener">Quero agendar minha conversa</a>
+    <div class="cta-note">Sem compromisso. Sem enrolação.</div>
+    <div class="scarcity-note">Atendo um número <strong>limitado</strong> de lojas por mês, para garantir atenção real em cada projeto.</div>
+  </div>
+</section>
+
+<footer>© 2026 Método MODA-Todos os direitos reservados.</footer>
+<footer>Desenvolvido para escalar as vendas online de lojas de Moda e varejo.</footer>
+
+<script>
+  // barra de progresso de leitura
+  const fill = document.getElementById('progressFill');
+  function updateProgress(){
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    fill.style.width = scrolled + '%';
+  }
+  document.addEventListener('scroll', updateProgress, {passive:true});
+  updateProgress();
+
+  // reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+
+  // esconde o aviso de vídeo ausente assim que o arquivo real carregar
+  const proofVideo = document.getElementById('proofVideo');
+  const proofNote = document.getElementById('proofNote');
+  if(proofVideo && proofNote){
+    proofVideo.addEventListener('loadeddata', ()=>{ proofNote.style.display = 'none'; });
+    proofVideo.addEventListener('error', ()=>{ proofNote.style.display = 'flex'; });
+  }
+</script>
+
+</body>
+</html>
