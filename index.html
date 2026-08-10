@@ -23,13 +23,14 @@
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
   body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'Montserrat', sans-serif;
-    font-weight:400;
-    line-height:1.55;
-    overflow-x:hidden;
-  }
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Montserrat', sans-serif;
+  font-weight:400;
+  line-height:1.55;
+  overflow-x:hidden;
+  padding-top:28px;
+}
   h1,h2,h3{
     font-family:'Montserrat', sans-serif;
     font-weight:800;
@@ -56,12 +57,12 @@
     padding:3.75rem 0;
   }
   .progress-track{
-    position:fixed;
-    top:0; left:0; right:0;
-    height:3px;
-    background:var(--line);
-    z-index:50;
-  }
+  position:fixed;
+  top:28px; left:0; right:0;
+  height:3px;
+  background:var(--line);
+  z-index:50;
+}
   .progress-fill{
     height:100%;
     width:0%;
@@ -544,6 +545,34 @@
 
 html{overflow-x:hidden;}
 
+.ticker-bar{
+  position:fixed;
+  top:0; left:0; right:0;
+  z-index:60;
+  height:28px;
+  background:#000;
+  color:var(--amber);
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  width:100%;
+}
+.ticker-track{
+  display:inline-block;
+  white-space:nowrap;
+  width:max-content;
+  padding-left:100%;
+  font-weight:800;
+  font-size:0.7rem;
+  letter-spacing:0.03em;
+  animation:tickerScroll 16s linear infinite;
+}
+
+@keyframes tickerScroll{
+  0%{transform:translateX(0);}
+  100%{transform:translateX(-100%);}
+}
+
 </style>
 
 <!-- Meta Pixel Code -->
@@ -567,6 +596,10 @@ src="https://www.facebook.com/tr?id=995876466471133&ev=PageView&noscript=1"
 </head>
 <body>
 
+<div class="ticker-bar">
+  <div class="ticker-track">AGENDE SEU DIAGNÓSTICO - VAGAS LIMITADAS  &nbsp;&nbsp;•&nbsp;&nbsp; PARE DE PERDER CLIENTE PRA CONCORRÊNCIA &nbsp;&nbsp;•&nbsp;&nbsp; AGENDE AGORA E COMECE A VENDER TODOS OS DIAS &nbsp;&nbsp;•&nbsp;&nbsp; </div>
+</div>
+
 <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
 
 <!-- TELA 1 -->
@@ -576,7 +609,7 @@ src="https://www.facebook.com/tr?id=995876466471133&ev=PageView&noscript=1"
     <span class="eyebrow">Pensa comigo</span>
     <h1>O que aconteceria se <span>5 mil pessoas</span> vissem<br>sua loja, todos os dias?</h1>
     <p style="color:var(--amber); font-weight:700;">Você acha que venderia mais?</p>
-    <h2 style="font-size:clamp(1.05rem, 4vw, 1.4rem); color:var(--ink); font-weight:600; margin-bottom:1.6rem;">Nesta página, você vai entender exatamente o que precisa fazer pra vender online todos os dias e escalar o faturamento da sua loja em 90 dias. Mesmo que você não entenda nada de marketing ou vendas digitais.</h2>
+    <h2 style="font-size:clamp(1.05rem, 4vw, 1.4rem); color:var(--ink); font-weight:600; margin-bottom:1.6rem;">Até o final dessa página, você vai entender exatamente o que precisa fazer pra vender suas peças online diariamente e escalar o faturamento da sua loja nos próximos 90 dias. Mesmo que você não entenda nada sobre marketing digital ou vendas online.</h2>
     <div class="hero-cta">
 
       <a href="https://wa.me/5584999423056?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20meu%20Diagn%C3%B3stico%20Estrat%C3%A9gico%20Gratuito." class="btn" target="_blank" rel="noopener" onclick="fbq('track', 'Lead');">Quero vender mais</a>
